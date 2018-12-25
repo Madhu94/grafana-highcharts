@@ -1,30 +1,11 @@
-import { PanelCtrl } from 'grafana/app/plugins/sdk'; // will be resolved to app/plugins/sdk
+import { MetricsPanelCtrl } from 'grafana/app/plugins/sdk'; // will be resolved to app/plugins/sdk
 
-import './css/panel.base.scss';
-// Remove next imports if you don't need separate styles for light and dark themes
-import './css/panel.dark.scss';
-import './css/panel.light.scss';
-// Remove up to here
+const Highcharts = require('highcharts');
 
-class Ctrl extends PanelCtrl {
+class Ctrl extends MetricsPanelCtrl {
 
   constructor($scope, $injector) {
     super($scope, $injector);
-  }
-
-  link(scope, element) {
-    this.initStyles();
-  }
-
-  initStyles() {
-    window.System.import(this.panelPath + 'css/panel.base.css!');
-    // Remove next lines if you don't need separate styles for light and dark themes
-    if (grafanaBootData.user.lightTheme) {
-      window.System.import(this.panelPath + 'css/panel.light.css!');
-    } else {
-      window.System.import(this.panelPath + 'css/panel.dark.css!');
-    }
-    // Remove up to here
   }
 
   get panelPath() {
@@ -32,6 +13,16 @@ class Ctrl extends PanelCtrl {
       this._panelPath = `/public/plugins/${this.pluginId}/`;
     }
     return this._panelPath;
+  }
+
+  panelDidMount() {
+    super.panelDidMount();
+    Highcharts.chart('container', {
+      series: [{
+        data: [1,2,3,4,5,6,7,8,9,10],
+        name: 'test series'
+      }]
+    })
   }
   
 }
