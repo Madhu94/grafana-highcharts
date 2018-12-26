@@ -6,6 +6,31 @@ class Ctrl extends MetricsPanelCtrl {
 
   constructor($scope, $injector) {
     super($scope, $injector);
+    this.events.on('data-received', this.onDataReceived.bind(this));
+  }
+
+  flip(array) {
+    return array.map(([x, y]) => ([y * 1000, x]));
+  }
+
+  onDataReceived(args) {
+    const seriesData = this.flip(args[0].datapoints);
+    Highcharts.chart('container', {
+      xAxis: { type: 'datetime' },
+      series: [{
+        data: seriesData,
+        name: 'test series'
+      }],
+      plotOptions: {
+        series: {
+          connectNulls: true
+        }
+      },
+      chart: {
+        title: 'A timeseries chart! :) '
+      }
+    });
+    console.log(Highcharts.charts)
   }
 
   get panelPath() {
@@ -13,18 +38,7 @@ class Ctrl extends MetricsPanelCtrl {
       this._panelPath = `/public/plugins/${this.pluginId}/`;
     }
     return this._panelPath;
-  }
-
-  panelDidMount() {
-    super.panelDidMount();
-    Highcharts.chart('container', {
-      series: [{
-        data: [1,2,3,4,5,6,7,8,9,10],
-        name: 'test series'
-      }]
-    })
-  }
-  
+  }  
 }
 
 Ctrl.templateUrl = 'partials/template.html';

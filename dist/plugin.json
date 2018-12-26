@@ -1,22 +1,22 @@
 {
   "type": "panel",
-  "name": "Plugin Template Name",
-  "id": "grafana-plugin-template-webpack",
+  "name": "grafana-line-chart",
+  "id": "grafana-line-chart",
   "info": {
-    "description": "Plugin Template Name Description",
+    "description": "A plugin that adds a highcharts line series",
     "author": {
-      "name": "Author Name",
-      "url": "example.com"
+      "name": "madhu94",
+      "url": "https://github.com/madhu94"
     },
     "keywords": [ ],
     "logos": { },
     "links": [ ],
     "screenshots": [ ],
     "version": "0.0.1",
-    "updated": "2017-04-05"
+    "updated": "2018-12-23"
   },
   "dependencies": {
-    "grafanaVersion": "4.6.x",
+    "grafanaVersion": "5.2.x",
     "plugins": [ ]
   }
 }
