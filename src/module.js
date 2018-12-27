@@ -30,7 +30,6 @@ class Ctrl extends MetricsPanelCtrl {
         title: 'A timeseries chart! :) '
       }
     });
-    console.log(Highcharts.charts)
   }
 
   get panelPath() {

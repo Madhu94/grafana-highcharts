@@ -1,9 +1,9 @@
 {
   "type": "panel",
-  "name": "grafana-line-chart",
-  "id": "grafana-line-chart",
+  "name": "grafana-highcharts",
+  "id": "grafana-highcharts",
   "info": {
-    "description": "A plugin that adds a highcharts line series",
+    "description": "A plugin that adds a highcharts panel",
     "author": {
       "name": "madhu94",
       "url": "https://github.com/madhu94"

@@ -137,9 +137,7 @@ function (_MetricsPanelCtrl) {
   }, {
     key: "onDataReceived",
     value: function onDataReceived(args) {
-      console.log(args);
       var seriesData = this.flip(args[0].datapoints);
-      console.log(seriesData);
       Highcharts.chart('container', {
         xAxis: {
           type: 'datetime'
@@ -157,7 +155,6 @@ function (_MetricsPanelCtrl) {
           title: 'A timeseries chart! :) '
         }
       });
-      console.log(Highcharts.charts);
     }
   }, {
     key: "panelPath",
@@ -199,9 +196,9 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
  License: www.highcharts.com/license
 */
 (function (O, J) {
-  "object" === ( false ? "undefined" : _typeof(module)) && module.exports ? module.exports = O.document ? J(O) : J :  true ? !(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
+  "object" === ( false ? "undefined" : _typeof(module)) && module.exports ? module.exports = O.document ? J(O) : J :  true ? !(__WEBPACK_AMD_DEFINE_RESULT__ = (function () {
     return J(O);
-  }.call(exports, __webpack_require__, exports, module),
+  }).call(exports, __webpack_require__, exports, module),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : O.Highcharts = J(O);
 })("undefined" !== typeof window ? window : void 0, function (O) {
   var J = function () {
