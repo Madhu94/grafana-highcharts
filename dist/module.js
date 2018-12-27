@@ -104,7 +104,10 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 // will be resolved to app/plugins/sdk
-var Highcharts = __webpack_require__(2);
+var Highcharts = __webpack_require__(2); // for debugging
+
+
+window.Highcharts = Highcharts;
 
 var Ctrl =
 /*#__PURE__*/
@@ -135,28 +138,80 @@ function (_MetricsPanelCtrl) {
       });
     }
   }, {
-    key: "onDataReceived",
-    value: function onDataReceived(args) {
-      var seriesData = this.flip(args[0].datapoints);
-      Highcharts.chart('container', {
+    key: "_createChart",
+    value: function _createChart(data) {
+      return Highcharts.chart('container', {
         xAxis: {
           type: 'datetime'
         },
-        series: [{
-          data: seriesData,
-          name: 'test series'
-        }],
+        series: this._makeSeries(data),
         plotOptions: {
           series: {
             connectNulls: true
           }
         },
-        chart: {
-          title: {
-            text: 'A timeseries chart! :) '
-          }
+        title: {
+          text: 'TimeSeries Charts'
+        },
+        legend: {
+          enabled: false
         }
       });
+    }
+  }, {
+    key: "_makeSeries",
+    value: function _makeSeries(data) {
+      var _this2 = this;
+
+      return data.map(function (timeSerie) {
+        return {
+          id: timeSerie.target,
+          name: timeSerie.target,
+          data: _this2.flip(timeSerie.datapoints)
+        };
+      });
+    }
+  }, {
+    key: "_updateChart",
+    value: function _updateChart(data) {
+      var _this3 = this;
+
+      var series = this._makeSeries(data);
+
+      var newOnes = [],
+          oldOnes = [];
+
+      var _loop = function _loop(i) {
+        if (_this3.chart.series.find(function (serie) {
+          return serie.name === series[i].name;
+        })) {
+          oldOnes.push(series[i]);
+        } else {
+          newOnes.push(series[i]);
+        }
+      };
+
+      for (var i = 0; i < series.length; i++) {
+        _loop(i);
+      }
+
+      newOnes.forEach(function (serie) {
+        _this3.chart.addSeries(serie, false);
+      });
+      console.log(newOnes);
+      this.chart.update({
+        series: oldOnes
+      }, false);
+      this.chart.redraw();
+    }
+  }, {
+    key: "onDataReceived",
+    value: function onDataReceived(data) {
+      if (!this.chart) {
+        this.chart = this._createChart(data);
+      } else {
+        this._updateChart(data);
+      }
     }
   }, {
     key: "panelPath",
@@ -9817,3 +9872,4 @@ module.exports = function (module) {
 
 /***/ })
 /******/ ])});;
+//# sourceMappingURL=module.js.map
