@@ -1,5 +1,4 @@
-# Webpack Template for Grafana plugins development
-Grafana plugin to add a [Highcharts](https://www.highcharts.com/) panel.
+A Grafana plugin to add a [Highcharts](https://www.highcharts.com/) panel.
 
 # Build plugin
 
@@ -7,6 +6,11 @@ Grafana plugin to add a [Highcharts](https://www.highcharts.com/) panel.
 npm install
 npm run build
 ```
+For development,
+
+``
+npm run dev
+``
 
 ## Credits
 
