@@ -152,7 +152,9 @@ function (_MetricsPanelCtrl) {
           }
         },
         chart: {
-          title: 'A timeseries chart! :) '
+          title: {
+            text: 'A timeseries chart! :) '
+          }
         }
       });
     }

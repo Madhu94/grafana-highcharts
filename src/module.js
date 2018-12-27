@@ -27,7 +27,7 @@ class Ctrl extends MetricsPanelCtrl {
         }
       },
       chart: {
-        title: 'A timeseries chart! :) '
+        title:  {text: 'A timeseries chart! :) '}
       }
     });
   }
