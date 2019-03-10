@@ -1,7 +1,53 @@
 import { MetricsPanelCtrl } from 'grafana/app/plugins/sdk'; // will be resolved to app/plugins/sdk
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Highcharts from 'highcharts';
+import HighchartsReact from 'highcharts-react-official';
 
-const Highcharts = require('highcharts');
 
+class GrafanaHighchartsPanel extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { chartType: 'line' };
+    this._handleChartTypeSwitch = this._handleChartTypeSwitch.bind(this);
+  }
+
+  static get chartTypes() {
+    return [
+      'line',
+      'column',
+      'area',
+      'bar',
+      'pie'
+    ];
+  }
+
+  _handleChartTypeSwitch(event) {
+    console.log(event.target.value);
+    this.setState({chartType: event.target.value});
+  }
+
+  render() {
+    const choices = GrafanaHighchartsPanel.chartTypes.map((choice, idx) => {
+      return (<option value={choice} key={`${choice}-${idx}`}>{choice}</option>);
+    });
+    const options = {
+      ...this.props.options,
+      chart: {
+        ...this.props.options.chart,
+        type: this.state.chartType
+      }
+    };
+    return (
+      <div>
+        <select value={this.state.chartType} onChange={this._handleChartTypeSwitch}>
+          {choices}
+        </select>
+        <HighchartsReact options={options} />
+      </div>
+    );
+  }
+}
 // for debugging
 window.Highcharts = Highcharts;
 
@@ -12,12 +58,8 @@ class Ctrl extends MetricsPanelCtrl {
     this.events.on('data-received', this.onDataReceived.bind(this));
   }
 
-  flip(array) {
-    return array.map(([x, y]) => ([y * 1000, x]));
-  }
-
-  _createChart(data) {
-    return Highcharts.chart('container', {
+  _getChartConfig(data) {
+    return {
       xAxis: { type: 'datetime' },
       series: this._makeSeries(data),
       plotOptions: {
@@ -27,9 +69,9 @@ class Ctrl extends MetricsPanelCtrl {
       },
       title: { text: 'TimeSeries Charts' },
       legend: {
-        enabled: false
+        enabled: true
       }
-    });
+    };
   }
 
   _makeSeries(data) {
@@ -37,35 +79,14 @@ class Ctrl extends MetricsPanelCtrl {
       return {
         id: timeSerie.target,
         name: timeSerie.target,
-        data: this.flip(timeSerie.datapoints)
+        data: timeSerie.datapoints.map(([x, y]) => ([y * 1000, x]))
       }
     });
-  }
-
-  _updateChart(data) {
-    const series = this._makeSeries(data);
-    let newOnes = [], oldOnes = [];
-    for (let i = 0; i < series.length; i++) {
-      if (this.chart.series.find((serie) => serie.name === series[i].name)) {
-        oldOnes.push(series[i]);
-      } else {
-        newOnes.push(series[i]);
-      }
-    }
-    newOnes.forEach((serie) => {
-      this.chart.addSeries(serie, false);
-    });
-    console.log(newOnes);
-    this.chart.update({series: oldOnes}, false);
-    this.chart.redraw();
   }
 
   onDataReceived(data) {
-    if (!this.chart) {
-      this.chart = this._createChart(data);
-    } else {
-      this._updateChart(data);
-    }
+    ReactDOM.render(<GrafanaHighchartsPanel options={this._getChartConfig(data)} />, 
+      document.getElementById('container'));
   }
 
   get panelPath() {

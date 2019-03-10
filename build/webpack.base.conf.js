@@ -17,7 +17,7 @@ module.exports = {
   },
   externals: [
     // remove the line below if you don't want to use buildin versions
-    'jquery', 'lodash', 'moment',
+    'jquery', 'lodash', 'moment', 'react', 'react-dom',
     function (context, request, callback) {
       var prefix = 'grafana/';
       if (request.indexOf(prefix) === 0) {
@@ -47,7 +47,8 @@ module.exports = {
           loader: 'babel-loader',
           query: {
             presets: [
-              require.resolve('@babel/preset-env')
+              require.resolve('@babel/preset-env'),
+              require.resolve('@babel/preset-react')
             ]
           }
         }

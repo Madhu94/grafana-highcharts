@@ -1,4 +1,4 @@
-define(["app/plugins/sdk"], function(__WEBPACK_EXTERNAL_MODULE_1__) { return /******/ (function(modules) { // webpackBootstrap
+define(["react","app/plugins/sdk","react-dom"], function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_4__) { return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -60,25 +60,61 @@ define(["app/plugins/sdk"], function(__WEBPACK_EXTERNAL_MODULE_1__) { return /**
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_0__;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+module.exports = function (module) {
+  if (!module.webpackPolyfill) {
+    module.deprecate = function () {};
+
+    module.paths = []; // module.parent = undefined by default
+
+    if (!module.children) module.children = [];
+    Object.defineProperty(module, "loaded", {
+      enumerable: true,
+      get: function get() {
+        return module.l;
+      }
+    });
+    Object.defineProperty(module, "id", {
+      enumerable: true,
+      get: function get() {
+        return module.i;
+      }
+    });
+    module.webpackPolyfill = 1;
+  }
+
+  return module;
+};
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.PanelCtrl = void 0;
-
-var _sdk = __webpack_require__(1);
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PanelCtrl", function() { return Ctrl; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_grafana_app_plugins_sdk__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_grafana_app_plugins_sdk___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_grafana_app_plugins_sdk__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_dom__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_dom__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_highcharts__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_highcharts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_highcharts__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_highcharts_react_official__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_highcharts_react_official___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_highcharts_react_official__);
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -86,6 +122,12 @@ function _nonIterableRest() { throw new TypeError("Invalid attempt to destructur
 function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -103,11 +145,74 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-// will be resolved to app/plugins/sdk
-var Highcharts = __webpack_require__(2); // for debugging
+ // will be resolved to app/plugins/sdk
 
 
-window.Highcharts = Highcharts;
+
+
+
+
+var GrafanaHighchartsPanel =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(GrafanaHighchartsPanel, _React$Component);
+
+  function GrafanaHighchartsPanel(props) {
+    var _this;
+
+    _classCallCheck(this, GrafanaHighchartsPanel);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(GrafanaHighchartsPanel).call(this, props));
+    _this.state = {
+      chartType: 'line'
+    };
+    _this._handleChartTypeSwitch = _this._handleChartTypeSwitch.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
+  }
+
+  _createClass(GrafanaHighchartsPanel, [{
+    key: "_handleChartTypeSwitch",
+    value: function _handleChartTypeSwitch(event) {
+      console.log(event.target.value);
+      this.setState({
+        chartType: event.target.value
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var choices = GrafanaHighchartsPanel.chartTypes.map(function (choice, idx) {
+        return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("option", {
+          value: choice,
+          key: "".concat(choice, "-").concat(idx)
+        }, choice);
+      });
+
+      var options = _objectSpread({}, this.props.options, {
+        chart: _objectSpread({}, this.props.options.chart, {
+          type: this.state.chartType
+        })
+      });
+
+      return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", null, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("select", {
+        value: this.state.chartType,
+        onChange: this._handleChartTypeSwitch
+      }, choices), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_highcharts_react_official___default.a, {
+        options: options
+      }));
+    }
+  }], [{
+    key: "chartTypes",
+    get: function get() {
+      return ['line', 'column', 'area', 'bar', 'pie'];
+    }
+  }]);
+
+  return GrafanaHighchartsPanel;
+}(__WEBPACK_IMPORTED_MODULE_1_react___default.a.Component); // for debugging
+
+
+window.Highcharts = __WEBPACK_IMPORTED_MODULE_3_highcharts___default.a;
 
 var Ctrl =
 /*#__PURE__*/
@@ -115,32 +220,21 @@ function (_MetricsPanelCtrl) {
   _inherits(Ctrl, _MetricsPanelCtrl);
 
   function Ctrl($scope, $injector) {
-    var _this;
+    var _this2;
 
     _classCallCheck(this, Ctrl);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Ctrl).call(this, $scope, $injector));
+    _this2 = _possibleConstructorReturn(this, _getPrototypeOf(Ctrl).call(this, $scope, $injector));
 
-    _this.events.on('data-received', _this.onDataReceived.bind(_assertThisInitialized(_assertThisInitialized(_this))));
+    _this2.events.on('data-received', _this2.onDataReceived.bind(_assertThisInitialized(_assertThisInitialized(_this2))));
 
-    return _this;
+    return _this2;
   }
 
   _createClass(Ctrl, [{
-    key: "flip",
-    value: function flip(array) {
-      return array.map(function (_ref) {
-        var _ref2 = _slicedToArray(_ref, 2),
-            x = _ref2[0],
-            y = _ref2[1];
-
-        return [y * 1000, x];
-      });
-    }
-  }, {
-    key: "_createChart",
-    value: function _createChart(data) {
-      return Highcharts.chart('container', {
+    key: "_getChartConfig",
+    value: function _getChartConfig(data) {
+      return {
         xAxis: {
           type: 'datetime'
         },
@@ -154,64 +248,33 @@ function (_MetricsPanelCtrl) {
           text: 'TimeSeries Charts'
         },
         legend: {
-          enabled: false
+          enabled: true
         }
-      });
+      };
     }
   }, {
     key: "_makeSeries",
     value: function _makeSeries(data) {
-      var _this2 = this;
-
       return data.map(function (timeSerie) {
         return {
           id: timeSerie.target,
           name: timeSerie.target,
-          data: _this2.flip(timeSerie.datapoints)
+          data: timeSerie.datapoints.map(function (_ref) {
+            var _ref2 = _slicedToArray(_ref, 2),
+                x = _ref2[0],
+                y = _ref2[1];
+
+            return [y * 1000, x];
+          })
         };
       });
     }
   }, {
-    key: "_updateChart",
-    value: function _updateChart(data) {
-      var _this3 = this;
-
-      var series = this._makeSeries(data);
-
-      var newOnes = [],
-          oldOnes = [];
-
-      var _loop = function _loop(i) {
-        if (_this3.chart.series.find(function (serie) {
-          return serie.name === series[i].name;
-        })) {
-          oldOnes.push(series[i]);
-        } else {
-          newOnes.push(series[i]);
-        }
-      };
-
-      for (var i = 0; i < series.length; i++) {
-        _loop(i);
-      }
-
-      newOnes.forEach(function (serie) {
-        _this3.chart.addSeries(serie, false);
-      });
-      console.log(newOnes);
-      this.chart.update({
-        series: oldOnes
-      }, false);
-      this.chart.redraw();
-    }
-  }, {
     key: "onDataReceived",
     value: function onDataReceived(data) {
-      if (!this.chart) {
-        this.chart = this._createChart(data);
-      } else {
-        this._updateChart(data);
-      }
+      __WEBPACK_IMPORTED_MODULE_2_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(GrafanaHighchartsPanel, {
+        options: this._getChartConfig(data)
+      }), document.getElementById('container'));
     }
   }, {
     key: "panelPath",
@@ -225,25 +288,28 @@ function (_MetricsPanelCtrl) {
   }]);
 
   return Ctrl;
-}(_sdk.MetricsPanelCtrl);
+}(__WEBPACK_IMPORTED_MODULE_0_grafana_app_plugins_sdk__["MetricsPanelCtrl"]);
 
-exports.PanelCtrl = Ctrl;
 Ctrl.templateUrl = 'partials/template.html';
 
+
 /***/ }),
-/* 1 */
+/* 3 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
+module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
 
 /***/ }),
-/* 2 */
+/* 4 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_4__;
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-/* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_RESULT__;
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+/* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 /*
  Highcharts JS v7.0.1 (2018-12-19)
@@ -257,7 +323,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     return J(O);
   }).call(exports, __webpack_require__, exports, module),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : O.Highcharts = J(O);
-})("undefined" !== typeof window ? window : void 0, function (O) {
+})("undefined" !== typeof window ? window : this, function (O) {
   var J = function () {
     var a = "undefined" === typeof O ? window : O,
         y = a.document,
@@ -9836,39 +9902,149 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
   return J;
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
-/* 3 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+!function (e, t) {
+  "object" == ( false ? "undefined" : _typeof(exports)) && "object" == ( false ? "undefined" : _typeof(module)) ? module.exports = t(__webpack_require__(0)) :  true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(0)], __WEBPACK_AMD_DEFINE_FACTORY__ = (t),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? exports.HighchartsReact = t(require("react")) : e.HighchartsReact = t(e.react);
+}("undefined" != typeof self ? self : this, function (e) {
+  return function (e) {
+    function t(n) {
+      if (r[n]) return r[n].exports;
+      var o = r[n] = {
+        i: n,
+        l: !1,
+        exports: {}
+      };
+      return e[n].call(o.exports, o, o.exports, t), o.l = !0, o.exports;
+    }
 
-module.exports = function (module) {
-  if (!module.webpackPolyfill) {
-    module.deprecate = function () {};
+    var r = {};
+    return t.m = e, t.c = r, t.d = function (e, r, n) {
+      t.o(e, r) || Object.defineProperty(e, r, {
+        configurable: !1,
+        enumerable: !0,
+        get: n
+      });
+    }, t.n = function (e) {
+      var r = e && e.__esModule ? function () {
+        return e.default;
+      } : function () {
+        return e;
+      };
+      return t.d(r, "a", r), r;
+    }, t.o = function (e, t) {
+      return Object.prototype.hasOwnProperty.call(e, t);
+    }, t.p = "", t(t.s = 0);
+  }([function (e, t, r) {
+    "use strict";
 
-    module.paths = []; // module.parent = undefined by default
+    function n(e) {
+      if (Array.isArray(e)) {
+        for (var t = 0, r = Array(e.length); t < e.length; t++) {
+          r[t] = e[t];
+        }
 
-    if (!module.children) module.children = [];
-    Object.defineProperty(module, "loaded", {
-      enumerable: true,
-      get: function get() {
-        return module.l;
+        return r;
       }
-    });
-    Object.defineProperty(module, "id", {
-      enumerable: true,
-      get: function get() {
-        return module.i;
-      }
-    });
-    module.webpackPolyfill = 1;
-  }
 
-  return module;
-};
+      return Array.from(e);
+    }
+
+    function o(e, t) {
+      if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+    }
+
+    function i(e, t) {
+      if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+      return !t || "object" != _typeof(t) && "function" != typeof t ? e : t;
+    }
+
+    function c(e, t) {
+      if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + _typeof(t));
+      e.prototype = Object.create(t && t.prototype, {
+        constructor: {
+          value: e,
+          enumerable: !1,
+          writable: !0,
+          configurable: !0
+        }
+      }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
+    }
+
+    Object.defineProperty(t, "__esModule", {
+      value: !0
+    });
+
+    var u = function () {
+      function e(e, t) {
+        for (var r = 0; r < t.length; r++) {
+          var n = t[r];
+          n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n);
+        }
+      }
+
+      return function (t, r, n) {
+        return r && e(t.prototype, r), n && e(t, n), t;
+      };
+    }(),
+        a = r(1),
+        f = function (e) {
+      return e && e.__esModule ? e : {
+        default: e
+      };
+    }(a),
+        p = function (e) {
+      function t(e) {
+        o(this, t);
+        var r = i(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this, e));
+        return r.container = f.default.createRef(), r;
+      }
+
+      return c(t, e), u(t, [{
+        key: "componentDidMount",
+        value: function value() {
+          var e = this.props,
+              t = e.highcharts || window.Highcharts;
+          this.chart = t[e.constructorType || "chart"](this.container.current, e.options, e.callback ? e.callback : void 0);
+        }
+      }, {
+        key: "componentDidUpdate",
+        value: function value() {
+          if (!1 !== this.props.allowChartUpdate) {
+            var e;
+            (e = this.chart).update.apply(e, [this.props.options].concat(n(this.props.updateArgs || [!0, !0])));
+          }
+        }
+      }, {
+        key: "componentWillUnmount",
+        value: function value() {
+          this.chart && (this.chart.destroy(), this.chart = null);
+        }
+      }, {
+        key: "render",
+        value: function value() {
+          return f.default.createElement("div", {
+            ref: this.container
+          });
+        }
+      }]), t;
+    }(f.default.PureComponent);
+
+    t.default = p;
+  }, function (t, r) {
+    t.exports = e;
+  }]);
+});
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ })
 /******/ ])});;
